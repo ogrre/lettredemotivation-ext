@@ -1,168 +1,171 @@
-# Lettre de Motivation - Extension Navigateur
+# Cover Letter Generator - Browser Extension
 
-Extension navigateur dark mode compatible Chrome et Firefox pour générer automatiquement des lettres de motivation personnalisées grâce à l'IA OpenAI.
+A browser extension for Chrome and Firefox that automatically generates personalized cover letters using AI (OpenAI GPT-4o-mini).
 
 ## 🎨 Design
 
-Interface minimaliste inspirée de Raycast avec :
-- Fond noir pur (#0a0a0a)
-- Bordures fines grises
-- Effets d'ombres inversées (inset)
-- Animations fluides
+Minimalist dark mode interface inspired by Raycast:
+- Pure black background (#0a0a0a)
+- Thin gray borders
+- Inverted shadow effects (inset)
+- Smooth animations
 
-## 🚀 Fonctionnalités
+## 🚀 Features
 
-- 📝 Génération automatique de lettres de motivation personnalisées
-- 🤖 Utilisation de l'API OpenAI (GPT-4o-mini)
-- 📄 Import de CV au format PDF avec extraction automatique (pdf.js)
-- 🌐 Support multilingue (Français et Anglais) pour la lettre générée
-- 🌍 Interface disponible en français et anglais (détection automatique du navigateur)
-- 🎯 Personnalisation du nombre de caractères
-- 📋 Copie automatique dans le presse-papier
-- 💼 Compatible avec Indeed, Welcome to the Jungle, et autres sites d'emploi
+- 📝 Automatic generation of personalized cover letters
+- 🤖 Powered by OpenAI API (GPT-4o-mini)
+- 📄 PDF resume import with automatic text extraction (pdf.js)
+- 🌐 Multilingual support for generated letters (French and English)
+- 🌍 Interface available in French and English (automatic browser language detection)
+- 🎯 Customizable character count
+- 📋 Automatic clipboard copy
+- 💼 Compatible with Indeed, Welcome to the Jungle, and other job sites
+
+## 🛠️ How It Works
+
+1. **Setup**: Configure your OpenAI API key and upload your resume (PDF) in the settings
+2. **Generate**: Paste the job description, select the language and character count
+3. **Get Your Letter**: The AI analyzes your resume and the job posting to create a tailored cover letter
+4. **Copy & Apply**: Click to copy the letter and paste it directly into job applications
 
 ## 📦 Installation
 
 ### Chrome / Brave
 
-1. Clonez ou téléchargez ce repository
-2. Ouvrez Chrome/Brave et allez dans `chrome://extensions/` ou `brave://extensions/`
-3. Activez le "Mode développeur" en haut à droite
-4. Cliquez sur "Charger l'extension non empaquetée"
-5. Sélectionnez le dossier `lettre-de-motivation-extension`
+1. Clone or download this repository
+2. Open Chrome/Brave and go to `chrome://extensions/` or `brave://extensions/`
+3. Enable "Developer mode" (top right)
+4. Click "Load unpacked"
+5. Select the `lettre-de-motivation-extension` folder
 
 ### Firefox
 
-1. Clonez ou téléchargez ce repository
-2. Ouvrez Firefox et allez dans `about:debugging#/runtime/this-firefox`
-3. Cliquez sur "Charger un module complémentaire temporaire"
-4. Sélectionnez le fichier `manifest.json` dans le dossier `lettre-de-motivation-extension`
+1. Clone or download this repository
+2. Open Firefox and go to `about:debugging#/runtime/this-firefox`
+3. Click "Load Temporary Add-on"
+4. Select the `manifest.json` file in the `lettre-de-motivation-extension` folder
 
 ## ⚙️ Configuration
 
-1. Cliquez sur l'icône de l'extension dans la barre d'outils
-2. Cliquez sur l'icône d'engrenage en haut à droite
-3. Renseignez les informations suivantes :
-   - **Clé API OpenAI** : Obtenez-la sur [platform.openai.com](https://platform.openai.com/api-keys)
-   - **CV** : Téléchargez votre CV au format PDF (extraction automatique du texte)
-4. Cliquez sur "Enregistrer la configuration"
+1. Click the extension icon in the toolbar
+2. Click the gear icon (top right)
+3. Enter the following information:
+   - **OpenAI API Key**: Get one at [platform.openai.com](https://platform.openai.com/api-keys)
+   - **Resume**: Upload your resume in PDF format (automatic text extraction)
+   - **Interface Language**: Choose between French and English (auto-detected by default)
+4. Click "Save configuration"
 
-## 🎯 Utilisation
+## 🎯 Usage
 
-1. Naviguez vers un site d'offre d'emploi
-2. Cliquez sur l'icône de l'extension
-3. Collez la description du poste dans le champ principal
-4. Choisissez la langue (🇫🇷 Français ou 🇬🇧 English)
-5. Définissez le nombre de caractères maximum
-6. Cliquez sur "Générer ma lettre de motivation"
-7. Une modale s'affiche avec le résultat
-8. Cliquez sur "Copier et fermer" pour copier le texte dans le presse-papier
+1. Navigate to a job listing website
+2. Click the extension icon
+3. Paste the job description in the main field
+4. Choose the language (🇫🇷 French or 🇬🇧 English)
+5. Set the maximum number of characters
+6. Click "Generate my cover letter"
+7. A modal appears with the result
+8. Click "Copy and close" to copy the text to your clipboard
 
-## 🛠️ Développement
+## 🧪 Development
 
-### Installation des dépendances
+### Installation
 
 ```bash
 npm install
 ```
 
-### Scripts disponibles
+### Available Scripts
 
 ```bash
 # Tests
-npm test                    # Lancer les tests
-npm run test:watch         # Tests en mode watch
-npm run test:coverage      # Tests avec rapport de couverture
+npm test                    # Run tests
+npm run test:watch         # Tests in watch mode
+npm run test:coverage      # Tests with coverage report
 
 # Linting
-npm run lint               # Vérifier le code
-npm run lint:fix          # Corriger automatiquement les erreurs
+npm run lint               # Check code
+npm run lint:fix          # Auto-fix errors
 
-# Formatage
-npm run format             # Formater le code
-npm run format:check      # Vérifier le formatage
+# Formatting
+npm run format             # Format code
+npm run format:check      # Check formatting
 
-# Validation complète
+# Full validation
 npm run validate          # Lint + format + tests + coverage
 
 # Build
-npm run build             # Build l'extension pour distribution
+npm run build             # Build extension for distribution
 
-# Lancement
-npm run start:firefox     # Lancer dans Firefox
-npm run start:chrome      # Lancer dans Chrome
+# Launch
+npm run start:firefox     # Launch in Firefox
+npm run start:chrome      # Launch in Chrome
 ```
 
-### Structure du projet
+### Project Structure
 
 ```
 lettre-de-motivation-extension/
-├── manifest.json              # Configuration de l'extension
-├── popup.html                 # Interface utilisateur
-├── styles.css                 # Styles dark mode
+├── manifest.json              # Extension configuration
+├── popup.html                 # User interface
+├── styles.css                 # Dark mode styles
 ├── scripts/
-│   ├── popup.js              # Logique de l'interface
-│   ├── background.js         # Gestion des appels API
-│   └── content.js            # Interaction avec les pages web
-├── lib/                      # Bibliothèques externes (pdf.js)
-├── tests/                    # Tests unitaires
-│   ├── setup.js             # Configuration des tests
-│   ├── popup.test.js        # Tests du popup
-│   └── background.test.js   # Tests du background
-├── jest.config.js            # Configuration Jest
-├── .eslintrc.json           # Configuration ESLint
-├── .prettierrc.json         # Configuration Prettier
+│   ├── popup.js              # Interface logic
+│   ├── background.js         # API calls handler
+│   ├── content.js            # Web page interaction
+│   └── i18n.js               # Internationalization system
+├── lib/                      # External libraries (pdf.js)
+├── tests/                    # Unit tests
+│   ├── setup.js             # Test configuration
+│   ├── popup.test.js        # Popup tests
+│   └── background.test.js   # Background tests
+├── jest.config.js            # Jest configuration
+├── .eslintrc.json           # ESLint configuration
+├── .prettierrc.json         # Prettier configuration
 └── README.md
 ```
 
-## 🧪 Tests et Qualité du Code
+## 🧪 Tests and Code Quality
 
-- **Jest** : Tests unitaires avec couverture de code
-- **ESLint** : Linting du code JavaScript
-- **Prettier** : Formatage automatique du code
-- **Coverage** : Seuil minimum de 70% sur toutes les métriques
+- **Jest**: Unit tests with code coverage
+- **ESLint**: JavaScript linting
+- **Prettier**: Automatic code formatting
+- **Coverage**: Minimum threshold of 70% on all metrics
 
-## 🔐 Sécurité
+## 🔐 Security
 
-- Votre clé API est stockée localement dans votre navigateur
-- Aucune donnée n'est envoyée à des serveurs tiers (sauf OpenAI)
-- Le CV est extrait et stocké en texte dans le stockage local du navigateur
+- Your API key is stored locally in your browser
+- No data is sent to third-party servers (except OpenAI)
+- Your resume is extracted and stored as text in the browser's local storage
 
-## 💰 Coûts
+## 💰 Costs
 
-L'utilisation de cette extension nécessite une clé API OpenAI et génère des coûts selon votre usage. Le modèle utilisé est `gpt-4o-mini` pour optimiser les coûts.
+Using this extension requires an OpenAI API key and generates costs based on your usage. The model used is `gpt-4o-mini` to optimize costs.
 
-## 📝 Prompt optimisé
+## 📝 Optimized Prompt
 
-L'extension utilise un prompt sophistiqué qui :
-- Analyse votre CV et identifie les compétences pertinentes
-- Examine la description du poste pour comprendre les besoins
-- Génère un texte authentique et personnalisé
-- Évite les clichés et formules génériques
-- Respecte la limite de caractères
-- Supprime automatiquement les formules de politesse
+The extension uses a sophisticated prompt that:
+- Analyzes your resume and identifies relevant skills
+- Examines the job description to understand requirements
+- Generates authentic and personalized text
+- Avoids clichés and generic phrases
+- Respects the character limit
+- Automatically removes greeting and closing formulas
 
-## 🐛 Problèmes connus
+## 🌐 Links
 
-- L'extraction PDF fonctionne pour la plupart des PDFs, mais certains formats complexes peuvent poser problème
-- La couverture de tests doit être améliorée (actuellement à 0%)
+- **Website**: [lettredemotivation.app](https://www.lettredemotivation.app)
+- **Report a bug**: [GitHub Issues](https://github.com/ogrre/lettredemotivation-ext/issues)
+- **Developed by**: [Black Betta](https://betta.black)
 
-## 🚧 Roadmap
-
-- [ ] Améliorer la couverture de tests
-- [ ] Ajouter plus de langues
-- [ ] Sauvegarder l'historique des lettres générées
-- [ ] Ajouter des templates personnalisables
-- [ ] Support des formats de CV autres que PDF
-
-## 📄 Licence
+## 📄 License
 
 MIT License
 
-## 👨‍💻 Contribution
+## 👨‍💻 Contributing
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
+Contributions are welcome! Feel free to open an issue or pull request.
 
 ---
 
-Créé avec ❤️ pour faciliter la recherche d'emploi
+© 2024 [lettredemotivation.app](https://www.lettredemotivation.app) - All rights reserved
+Developed with ❤️ by [Black Betta](https://betta.black)

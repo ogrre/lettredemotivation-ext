@@ -139,6 +139,30 @@
 
     <form id="config-form" class="settings-content">
       <div class="form-group">
+        <label for="interfaceLanguage">Langue de l'interface</label>
+        <div class="custom-select">
+          <button type="button" id="interface-language-btn" class="select-btn">
+            <span class="flag">🇬🇧</span>
+            <span class="text">English</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div id="interface-language-dropdown" class="dropdown-menu">
+            <button type="button" class="dropdown-item" data-value="fr">
+              <span class="flag">🇫🇷</span>
+              <span>Français</span>
+            </button>
+            <button type="button" class="dropdown-item" data-value="en">
+              <span class="flag">🇬🇧</span>
+              <span>English</span>
+            </button>
+          </div>
+        </div>
+        <input type="hidden" id="interfaceLanguage" value="en">
+      </div>
+
+      <div class="form-group">
         <label for="apiKey">
           Clé API OpenAI
           <span class="required">*</span>
@@ -236,6 +260,7 @@
     </div>
   </div>
 
+  <script src="scripts/i18n.js"></script>
   <script src="scripts/popup.js"></script>
 </body>
 </html>

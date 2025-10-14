@@ -16,6 +16,11 @@ if (btnLoader) btnLoader.style.display = 'none';
 if (errorBanner) errorBanner.style.display = 'none';
 if (configMessage) configMessage.style.display = 'none';
 
+// Initialiser la langue et traduire l'interface
+initLanguage().then(() => {
+  updateUI();
+});
+
 console.log('Settings button:', settingsBtn);
 console.log('Back button:', backBtn);
 console.log('Main container:', mainContainer);
@@ -60,22 +65,27 @@ if (bugBtn) {
   });
 }
 
-// === Sélecteur de langue personnalisé ===
+// === Sélecteurs de langue personnalisés ===
 const languageBtn = document.getElementById('language-btn');
 const languageDropdown = document.getElementById('language-dropdown');
 const languageInput = document.getElementById('language');
+
+const interfaceLanguageBtn = document.getElementById('interface-language-btn');
+const interfaceLanguageDropdown = document.getElementById('interface-language-dropdown');
+const interfaceLanguageInput = document.getElementById('interfaceLanguage');
 
 const languages = {
   fr: { flag: '🇫🇷', text: 'Français' },
   en: { flag: '🇬🇧', text: 'English' }
 };
 
+// Sélecteur de langue pour la lettre
 languageBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   languageDropdown.classList.toggle('show');
 });
 
-document.querySelectorAll('.dropdown-item').forEach(item => {
+document.querySelectorAll('#language-dropdown .dropdown-item').forEach(item => {
   item.addEventListener('click', (e) => {
     const value = e.currentTarget.dataset.value;
     const lang = languages[value];
@@ -88,9 +98,36 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
   });
 });
 
-// Fermer le dropdown en cliquant ailleurs
+// Sélecteur de langue de l'interface
+if (interfaceLanguageBtn) {
+  interfaceLanguageBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    interfaceLanguageDropdown.classList.toggle('show');
+  });
+
+  document.querySelectorAll('#interface-language-dropdown .dropdown-item').forEach(item => {
+    item.addEventListener('click', async (e) => {
+      const value = e.currentTarget.dataset.value;
+      const lang = languages[value];
+
+      interfaceLanguageBtn.querySelector('.flag').textContent = lang.flag;
+      interfaceLanguageBtn.querySelector('.text').textContent = lang.text;
+      interfaceLanguageInput.value = value;
+
+      interfaceLanguageDropdown.classList.remove('show');
+
+      // Changer la langue de l'interface
+      await setLanguage(value);
+    });
+  });
+}
+
+// Fermer les dropdowns en cliquant ailleurs
 document.addEventListener('click', () => {
   languageDropdown.classList.remove('show');
+  if (interfaceLanguageDropdown) {
+    interfaceLanguageDropdown.classList.remove('show');
+  }
 });
 
 // === Détecter la langue automatiquement ===
@@ -126,14 +163,14 @@ async function detectLanguage() {
 
 // === Charger la configuration ===
 async function loadConfig() {
-  const config = await chrome.storage.local.get(['apiKey', 'cvUploaded', 'cvText', 'language', 'maxChars']);
+  const config = await chrome.storage.local.get(['apiKey', 'cvUploaded', 'cvText', 'language', 'maxChars', 'interfaceLanguage']);
 
   if (config.apiKey) {
     document.getElementById('apiKey').value = config.apiKey;
   }
 
   if (config.cvUploaded && config.cvText) {
-    document.getElementById('cv-status').textContent = '✓ CV enregistré';
+    document.getElementById('cv-status').textContent = t('cvStatusOk');
     document.getElementById('cv-status').style.color = '#10b981';
   }
 
@@ -152,6 +189,16 @@ async function loadConfig() {
 
   if (config.maxChars) {
     document.getElementById('maxChars').value = config.maxChars;
+  }
+
+  // Charger la langue de l'interface
+  if (config.interfaceLanguage && interfaceLanguageBtn) {
+    const interfaceLang = languages[config.interfaceLanguage];
+    if (interfaceLang) {
+      interfaceLanguageBtn.querySelector('.flag').textContent = interfaceLang.flag;
+      interfaceLanguageBtn.querySelector('.text').textContent = interfaceLang.text;
+      interfaceLanguageInput.value = config.interfaceLanguage;
+    }
   }
 }
 
@@ -175,7 +222,7 @@ document.getElementById('config-form').addEventListener('submit', async (e) => {
 
     // Extraire le texte du PDF si un nouveau fichier est sélectionné
     if (cvFile) {
-      showConfigMessage('Extraction du CV en cours...', 'info');
+      showConfigMessage(t('infoCvExtraction'), 'info');
 
       const cvData = await readFileAsArrayBuffer(cvFile);
       const cvText = await extractTextFromPDF(cvData);
@@ -188,8 +235,8 @@ document.getElementById('config-form').addEventListener('submit', async (e) => {
 
     await chrome.storage.local.set(config);
 
-    showConfigMessage('Configuration enregistrée avec succès !', 'success');
-    document.getElementById('cv-status').textContent = '✓ CV enregistré';
+    showConfigMessage(t('successConfig'), 'success');
+    document.getElementById('cv-status').textContent = t('cvStatusOk');
     document.getElementById('cv-status').style.color = '#10b981';
 
     // Retourner à la page principale après 1 seconde
@@ -249,7 +296,7 @@ document.getElementById('generate-form').addEventListener('submit', async (e) =>
   const maxChars = parseInt(document.getElementById('maxChars').value);
 
   if (!jobDescription) {
-    showError('Veuillez saisir une description de poste');
+    showError(t('errorNoDescription'));
     return;
   }
 
@@ -257,7 +304,7 @@ document.getElementById('generate-form').addEventListener('submit', async (e) =>
   const config = await chrome.storage.local.get(['apiKey', 'cvText']);
 
   if (!config.apiKey || !config.cvText) {
-    showError('Veuillez d\'abord configurer votre clé API et votre CV');
+    showError(t('errorNoConfig'));
     setTimeout(() => {
       mainContainer.style.display = 'none';
       settingsPage.style.display = 'flex';
@@ -292,10 +339,10 @@ document.getElementById('generate-form').addEventListener('submit', async (e) =>
     if (response.success) {
       showResultModal(response.coverLetter);
     } else {
-      showError(response.error || 'Une erreur est survenue lors de la génération');
+      showError(response.error || t('errorGeneration'));
     }
   } catch (error) {
-    showError(`Erreur : ${error.message}`);
+    showError(`${t('errorGeneration')} : ${error.message}`);
   } finally {
     generateBtn.disabled = false;
     generateIcon.style.display = 'block';
@@ -350,7 +397,7 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
     // Feedback visuel
     const copyText = document.getElementById('copy-text');
     const originalText = copyText.textContent;
-    copyText.textContent = '✓ Copié !';
+    copyText.textContent = t('copied');
 
     setTimeout(() => {
       closeModal();
@@ -360,7 +407,7 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
       }, 300);
     }, 500);
   } catch (error) {
-    showError('Erreur lors de la copie dans le presse-papier');
+    showError(t('errorCopy'));
   }
 });
 

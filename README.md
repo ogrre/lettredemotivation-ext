@@ -15,7 +15,8 @@ Interface minimaliste inspirée de Raycast avec :
 - 📝 Génération automatique de lettres de motivation personnalisées
 - 🤖 Utilisation de l'API OpenAI (GPT-4o-mini)
 - 📄 Import de CV au format PDF avec extraction automatique (pdf.js)
-- 🌐 Support multilingue (Français et Anglais)
+- 🌐 Support multilingue (Français et Anglais) pour la lettre générée
+- 🌍 Interface disponible en français et anglais (détection automatique du navigateur)
 - 🎯 Personnalisation du nombre de caractères
 - 📋 Copie automatique dans le presse-papier
 - 💼 Compatible avec Indeed, Welcome to the Jungle, et autres sites d'emploi

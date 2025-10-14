@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Générer les icônes</title>
+</head>
+<body>
+  <h1>Générateur d'icônes pour l'extension</h1>
+  <p>Cliquez sur les boutons pour télécharger chaque icône :</p>
+
+  <button onclick="downloadIcon(16)">Télécharger icon16.png</button>
+  <button onclick="downloadIcon(48)">Télécharger icon48.png</button>
+  <button onclick="downloadIcon(128)">Télécharger icon128.png</button>
+
+  <div style="margin-top: 20px;">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    function createIcon(size) {
+      const canvas = document.getElementById('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      // Fond bleu avec coins arrondis
+      ctx.fillStyle = '#3b82f6';
+      ctx.beginPath();
+      const radius = size / 6;
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(size - radius, 0);
+      ctx.quadraticCurveTo(size, 0, size, radius);
+      ctx.lineTo(size, size - radius);
+      ctx.quadraticCurveTo(size, size, size - radius, size);
+      ctx.lineTo(radius, size);
+      ctx.quadraticCurveTo(0, size, 0, size - radius);
+      ctx.lineTo(0, radius);
+      ctx.quadraticCurveTo(0, 0, radius, 0);
+      ctx.closePath();
+      ctx.fill();
+
+      // Lignes blanches (texte)
+      ctx.fillStyle = 'white';
+      const lineHeight = Math.max(2, size / 32);
+      const padding = size / 8;
+      const lineSpacing = size / 8;
+
+      // 4 lignes
+      for (let i = 0; i < 4; i++) {
+        const y = padding + (i * lineSpacing);
+        let width = size - (2 * padding);
+
+        if (i === 2) width *= 0.75;
+        if (i === 3) width *= 0.6;
+
+        ctx.fillRect(padding, y, width, lineHeight);
+      }
+
+      return canvas;
+    }
+
+    function downloadIcon(size) {
+      const canvas = createIcon(size);
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `icon${size}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // Afficher l'aperçu au chargement
+    window.onload = function() {
+      createIcon(128);
+    };
+  </script>
+</body>
+</html>

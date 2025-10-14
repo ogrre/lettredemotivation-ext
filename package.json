@@ -13,6 +13,7 @@
     "format:check": "prettier --check \"**/*.{js,json,css,html}\"",
     "validate": "npm run lint && npm run format:check && npm run test:coverage",
     "build": "web-ext build --source-dir=.",
+    "build:release": "./scripts/build.sh",
     "start:firefox": "web-ext run --source-dir=. --target=firefox-desktop",
     "start:chrome": "web-ext run --source-dir=. --target=chromium"
   },

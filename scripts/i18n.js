@@ -143,6 +143,9 @@ async function setLanguage(lang) {
 
 // Mettre à jour l'interface avec les traductions
 function updateUI() {
+  // Mettre à jour les tooltips
+  updateTooltips();
+
   // Header
   const appTitle = document.querySelector('header h1');
   if (appTitle) appTitle.textContent = t('appTitle');
@@ -251,6 +254,19 @@ function updateUI() {
 
   const modalClose = document.getElementById('modal-close');
   if (modalClose) modalClose.title = t('closeTooltip');
+}
+
+// Mettre à jour les tooltips selon la langue
+function updateTooltips() {
+  const infoIcons = document.querySelectorAll('.info-icon');
+  infoIcons.forEach(icon => {
+    const tooltipKey = currentLanguage === 'fr' ? 'data-tooltip-fr' : 'data-tooltip-en';
+    const tooltipText = icon.getAttribute(tooltipKey);
+    if (tooltipText) {
+      // Mettre à jour l'attribut CSS utilisé
+      icon.style.setProperty('--tooltip-content', `"${tooltipText}"`);
+    }
+  });
 }
 
 // Exporter pour utilisation dans popup.js

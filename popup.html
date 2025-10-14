@@ -68,8 +68,8 @@
             <input
               type="number"
               id="maxChars"
-              min="100"
-              max="5000"
+              min="200"
+              max="10000"
               value="3000"
               required
             >
@@ -166,6 +166,13 @@
         <label for="apiKey">
           Clé API OpenAI
           <span class="required">*</span>
+          <span class="info-icon" data-tooltip-fr="Votre clé API est stockée localement dans votre navigateur. Elle n'est jamais partagée avec des tiers. Utilisez une clé avec des limites de dépenses pour plus de sécurité." data-tooltip-en="Your API key is stored locally in your browser. It is never shared with third parties. Use a key with spending limits for added security.">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </span>
         </label>
         <input
           type="password"

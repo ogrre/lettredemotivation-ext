@@ -86,13 +86,16 @@ languageBtn.addEventListener('click', (e) => {
 });
 
 document.querySelectorAll('#language-dropdown .dropdown-item').forEach(item => {
-  item.addEventListener('click', (e) => {
+  item.addEventListener('click', async (e) => {
     const value = e.currentTarget.dataset.value;
     const lang = languages[value];
 
     languageBtn.querySelector('.flag').textContent = lang.flag;
     languageBtn.querySelector('.text').textContent = lang.text;
     languageInput.value = value;
+
+    // Sauvegarder la langue choisie
+    await chrome.storage.local.set({ language: value });
 
     languageDropdown.classList.remove('show');
   });
@@ -129,6 +132,17 @@ document.addEventListener('click', () => {
     interfaceLanguageDropdown.classList.remove('show');
   }
 });
+
+// === Sauvegarder le nombre de caractères ===
+const maxCharsInput = document.getElementById('maxChars');
+if (maxCharsInput) {
+  maxCharsInput.addEventListener('change', async (e) => {
+    const maxChars = parseInt(e.target.value);
+    if (maxChars >= 100 && maxChars <= 5000) {
+      await chrome.storage.local.set({ maxChars });
+    }
+  });
+}
 
 // === Détecter la langue automatiquement ===
 async function detectLanguage() {

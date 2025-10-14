@@ -1,7 +1,7 @@
 {
-  "name": "lettre-de-motivation-extension",
+  "name": "lettredemotivation-ext",
   "version": "1.0.0",
-  "description": "Extension navigateur compatible Chrome et Firefox pour générer automatiquement des lettres de motivation personnalisées grâce à l'IA OpenAI.",
+  "description": "Browser extension (Chrome/Firefox) to generate personalized cover letters using AI. Dark mode UI, PDF resume parsing, multilingual support (FR/EN). Powered by OpenAI GPT-4o-mini.",
   "main": "index.js",
   "scripts": {
     "test": "jest",

@@ -36,14 +36,14 @@ Minimalist dark mode interface inspired by Raycast:
 2. Open Chrome/Brave and go to `chrome://extensions/` or `brave://extensions/`
 3. Enable "Developer mode" (top right)
 4. Click "Load unpacked"
-5. Select the `lettre-de-motivation-extension` folder
+5. Select the `lettredemotivation-ext` folder
 
 ### Firefox
 
 1. Clone or download this repository
 2. Open Firefox and go to `about:debugging#/runtime/this-firefox`
 3. Click "Load Temporary Add-on"
-4. Select the `manifest.json` file in the `lettre-de-motivation-extension` folder
+4. Select the `manifest.json` file in the `lettredemotivation-ext` folder
 
 ## ⚙️ Configuration
 
@@ -104,7 +104,7 @@ npm run start:chrome      # Launch in Chrome
 ### Project Structure
 
 ```
-lettre-de-motivation-extension/
+lettredemotivation-ext/
 ├── manifest.json              # Extension configuration
 ├── popup.html                 # User interface
 ├── styles.css                 # Dark mode styles

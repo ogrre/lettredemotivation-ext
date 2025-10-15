@@ -114,11 +114,77 @@ label {
   color: #9ca3af;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  position: relative;
 }
 
 .required {
   color: #ef4444;
   margin-left: 2px;
+}
+
+/* === INFO ICON & TOOLTIP === */
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  cursor: help;
+  color: #6b7280;
+  transition: color 0.2s;
+  position: relative;
+  vertical-align: middle;
+}
+
+.info-icon:hover {
+  color: #60a5fa;
+}
+
+.info-icon::after {
+  content: var(--tooltip-content, attr(data-tooltip-en));
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: #d1d5db;
+  font-size: 11px;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  width: 280px;
+  text-align: left;
+  line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.info-icon::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a1a1a;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+.info-icon:hover::after,
+.info-icon:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 textarea {

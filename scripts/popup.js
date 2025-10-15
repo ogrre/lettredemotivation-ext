@@ -61,7 +61,7 @@ const bugBtn = document.getElementById('bug-btn');
 if (bugBtn) {
   bugBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    chrome.tabs.create({ url: 'https://github.com/votre-repo/issues' });
+    chrome.tabs.create({ url: 'https://github.com/ogrre/lettredemotivation-ext/issues' });
   });
 }
 
@@ -138,7 +138,7 @@ const maxCharsInput = document.getElementById('maxChars');
 if (maxCharsInput) {
   maxCharsInput.addEventListener('change', async (e) => {
     const maxChars = parseInt(e.target.value);
-    if (maxChars >= 100 && maxChars <= 5000) {
+    if (maxChars >= 200 && maxChars <= 10000) {
       await chrome.storage.local.set({ maxChars });
     }
   });

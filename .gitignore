@@ -6,3 +6,8 @@ coverage
 dist
 *.zip
 web-ext-artifacts
+
+# Fichiers de publication/release
+*.pem
+*.crx
+release/

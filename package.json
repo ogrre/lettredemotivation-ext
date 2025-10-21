@@ -11,7 +11,7 @@
     "lint:fix": "eslint scripts/**/*.js --fix",
     "format": "prettier --write \"**/*.{js,json,css,html}\"",
     "format:check": "prettier --check \"**/*.{js,json,css,html}\"",
-    "validate": "npm run lint && npm run format:check && npm run test:coverage",
+    "validate": "npm run lint && npm run format:check && npm test",
     "build": "web-ext build --source-dir=.",
     "build:release": "./scripts/build.sh",
     "start:firefox": "web-ext run --source-dir=. --target=firefox-desktop",
@@ -20,7 +20,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "pdfjs-dist": "^3.11.174"
   },

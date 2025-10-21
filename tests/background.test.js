@@ -37,7 +37,7 @@ describe('Background Script', () => {
   });
 
   describe('callOpenAI', () => {
-    it('devrait appeler l\'API OpenAI avec succès', async () => {
+    it("devrait appeler l'API OpenAI avec succès", async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({
@@ -55,7 +55,7 @@ describe('Background Script', () => {
       expect(true).toBe(true);
     });
 
-    it('devrait gérer les erreurs de l\'API', async () => {
+    it("devrait gérer les erreurs de l'API", async () => {
       mockFetch.mockResolvedValueOnce({
         ok: false,
         json: async () => ({

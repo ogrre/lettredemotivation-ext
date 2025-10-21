@@ -27,7 +27,7 @@ console.log('Main container:', mainContainer);
 console.log('Settings page:', settingsPage);
 
 if (settingsBtn) {
-  settingsBtn.addEventListener('click', (e) => {
+  settingsBtn.addEventListener('click', e => {
     e.preventDefault();
     console.log('Settings button clicked!');
     if (mainContainer) {
@@ -42,7 +42,7 @@ if (settingsBtn) {
 }
 
 if (backBtn) {
-  backBtn.addEventListener('click', (e) => {
+  backBtn.addEventListener('click', e => {
     e.preventDefault();
     console.log('Back button clicked!');
     if (settingsPage) {
@@ -59,7 +59,7 @@ if (backBtn) {
 // Bouton bug report
 const bugBtn = document.getElementById('bug-btn');
 if (bugBtn) {
-  bugBtn.addEventListener('click', (e) => {
+  bugBtn.addEventListener('click', e => {
     e.preventDefault();
     chrome.tabs.create({ url: 'https://github.com/ogrre/lettredemotivation-ext/issues' });
   });
@@ -76,17 +76,17 @@ const interfaceLanguageInput = document.getElementById('interfaceLanguage');
 
 const languages = {
   fr: { flag: '🇫🇷', text: 'Français' },
-  en: { flag: '🇬🇧', text: 'English' }
+  en: { flag: '🇬🇧', text: 'English' },
 };
 
 // Sélecteur de langue pour la lettre
-languageBtn.addEventListener('click', (e) => {
+languageBtn.addEventListener('click', e => {
   e.stopPropagation();
   languageDropdown.classList.toggle('show');
 });
 
 document.querySelectorAll('#language-dropdown .dropdown-item').forEach(item => {
-  item.addEventListener('click', async (e) => {
+  item.addEventListener('click', async e => {
     const value = e.currentTarget.dataset.value;
     const lang = languages[value];
 
@@ -103,13 +103,13 @@ document.querySelectorAll('#language-dropdown .dropdown-item').forEach(item => {
 
 // Sélecteur de langue de l'interface
 if (interfaceLanguageBtn) {
-  interfaceLanguageBtn.addEventListener('click', (e) => {
+  interfaceLanguageBtn.addEventListener('click', e => {
     e.stopPropagation();
     interfaceLanguageDropdown.classList.toggle('show');
   });
 
   document.querySelectorAll('#interface-language-dropdown .dropdown-item').forEach(item => {
-    item.addEventListener('click', async (e) => {
+    item.addEventListener('click', async e => {
       const value = e.currentTarget.dataset.value;
       const lang = languages[value];
 
@@ -136,7 +136,7 @@ document.addEventListener('click', () => {
 // === Sauvegarder le nombre de caractères ===
 const maxCharsInput = document.getElementById('maxChars');
 if (maxCharsInput) {
-  maxCharsInput.addEventListener('change', async (e) => {
+  maxCharsInput.addEventListener('change', async e => {
     const maxChars = parseInt(e.target.value);
     if (maxChars >= 200 && maxChars <= 10000) {
       await chrome.storage.local.set({ maxChars });
@@ -166,7 +166,7 @@ async function detectLanguage() {
 
     // 3. Déterminer la langue finale
     const isPageFrench = pageLang?.toLowerCase().startsWith('fr');
-    const detectedLang = (isFrench || isPageFrench) ? 'fr' : 'en';
+    const detectedLang = isFrench || isPageFrench ? 'fr' : 'en';
 
     return detectedLang;
   } catch (error) {
@@ -177,7 +177,14 @@ async function detectLanguage() {
 
 // === Charger la configuration ===
 async function loadConfig() {
-  const config = await chrome.storage.local.get(['apiKey', 'cvUploaded', 'cvText', 'language', 'maxChars', 'interfaceLanguage']);
+  const config = await chrome.storage.local.get([
+    'apiKey',
+    'cvUploaded',
+    'cvText',
+    'language',
+    'maxChars',
+    'interfaceLanguage',
+  ]);
 
   if (config.apiKey) {
     document.getElementById('apiKey').value = config.apiKey;
@@ -217,7 +224,7 @@ async function loadConfig() {
 }
 
 // === Gestion du fichier PDF ===
-document.getElementById('cvFile').addEventListener('change', (e) => {
+document.getElementById('cvFile').addEventListener('change', e => {
   const file = e.target.files[0];
   if (file) {
     document.getElementById('file-label-text').textContent = file.name;
@@ -225,7 +232,7 @@ document.getElementById('cvFile').addEventListener('change', (e) => {
 });
 
 // === Enregistrer la configuration ===
-document.getElementById('config-form').addEventListener('submit', async (e) => {
+document.getElementById('config-form').addEventListener('submit', async e => {
   e.preventDefault();
 
   const apiKey = document.getElementById('apiKey').value;
@@ -296,13 +303,15 @@ async function extractTextFromPDF(arrayBuffer) {
 
     return fullText.trim();
   } catch (error) {
-    console.error('Erreur lors de l\'extraction du PDF:', error);
-    throw new Error('Impossible d\'extraire le texte du PDF. Assurez-vous que le fichier est valide.');
+    console.error("Erreur lors de l'extraction du PDF:", error);
+    throw new Error(
+      "Impossible d'extraire le texte du PDF. Assurez-vous que le fichier est valide."
+    );
   }
 }
 
 // === Générer la lettre de motivation ===
-document.getElementById('generate-form').addEventListener('submit', async (e) => {
+document.getElementById('generate-form').addEventListener('submit', async e => {
   e.preventDefault();
 
   const jobDescription = document.getElementById('jobDescription').value.trim();
@@ -346,8 +355,8 @@ document.getElementById('generate-form').addEventListener('submit', async (e) =>
         jobDescription,
         cvText: config.cvText,
         language,
-        maxChars
-      }
+        maxChars,
+      },
     });
 
     if (response.success) {

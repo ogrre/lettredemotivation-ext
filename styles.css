@@ -5,7 +5,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #e5e7eb;
@@ -67,14 +68,18 @@ header h1 {
   cursor: pointer;
   transition: all 0.2s;
   color: #9ca3af;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .settings-btn:hover {
   background: #232323;
   border-color: #3a3a3a;
   color: #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .settings-btn:hover svg {
@@ -201,14 +206,18 @@ textarea {
   max-height: 300px;
   transition: all 0.2s;
   color: #e5e7eb;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 textarea:focus {
   outline: none;
   background: #1a1a1a;
   border-color: #3a3a3a;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.3);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.3);
 }
 
 textarea::placeholder {
@@ -241,7 +250,9 @@ textarea::placeholder {
   transition: all 0.2s;
   font-size: 13px;
   font-family: inherit;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .select-btn:hover {
@@ -317,7 +328,7 @@ textarea::placeholder {
 }
 
 /* === NUMBER INPUT === */
-input[type="number"] {
+input[type='number'] {
   width: 100%;
   padding: 10px 12px;
   background: #141414;
@@ -327,14 +338,18 @@ input[type="number"] {
   font-family: inherit;
   transition: all 0.2s;
   color: #e5e7eb;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
-input[type="number"]:focus {
+input[type='number']:focus {
   outline: none;
   background: #1a1a1a;
   border-color: #3a3a3a;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.3);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.3);
 }
 
 /* === GENERATE BUTTON === */
@@ -353,14 +368,18 @@ input[type="number"]:focus {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .btn-generate:hover:not(:disabled) {
   background: #232323;
   border-color: #3a3a3a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .btn-generate:active:not(:disabled) {
@@ -393,8 +412,12 @@ input[type="number"]:focus {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* === ERROR BANNER === */
@@ -470,7 +493,9 @@ input[type="number"]:focus {
   font-size: 12px;
   font-family: inherit;
   transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   width: 32px;
   height: 32px;
 }
@@ -480,7 +505,9 @@ input[type="number"]:focus {
   background: #232323;
   border-color: #3a3a3a;
   color: #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .back-btn:active,
@@ -534,8 +561,8 @@ input[type="number"]:focus {
 }
 
 /* === SETTINGS FORM === */
-input[type="password"],
-input[type="text"] {
+input[type='password'],
+input[type='text'] {
   width: 100%;
   padding: 12px;
   background: #141414;
@@ -545,15 +572,19 @@ input[type="text"] {
   font-family: inherit;
   transition: all 0.2s;
   color: #e5e7eb;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
-input[type="password"]:focus,
-input[type="text"]:focus {
+input[type='password']:focus,
+input[type='text']:focus {
   outline: none;
   background: #1a1a1a;
   border-color: #3a3a3a;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.3);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.3);
 }
 
 .help-text {
@@ -630,7 +661,9 @@ input[type="text"]:focus {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   margin-top: 20px;
 }
 
@@ -638,7 +671,9 @@ input[type="text"]:focus {
   background: #232323;
   border-color: #3a3a3a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .btn-save:active {
@@ -699,8 +734,12 @@ input[type="text"]:focus {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
@@ -713,7 +752,9 @@ input[type="text"]:focus {
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   transform: scale(0.95);
   opacity: 0;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -735,7 +776,9 @@ input[type="text"]:focus {
   color: #6b7280;
   transition: all 0.2s;
   z-index: 1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .modal-close:hover {
@@ -762,7 +805,9 @@ input[type="text"]:focus {
   justify-content: center;
   color: #10b981;
   animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .success-icon svg {
@@ -830,14 +875,18 @@ input[type="text"]:focus {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .btn-copy:hover {
   background: #232323;
   border-color: #3a3a3a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .btn-copy:active {

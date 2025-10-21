@@ -25,7 +25,7 @@ const translations = {
 
     // Messages
     errorNoDescription: 'Veuillez saisir une description de poste',
-    errorNoConfig: 'Veuillez d\'abord configurer votre clé API et votre CV',
+    errorNoConfig: "Veuillez d'abord configurer votre clé API et votre CV",
     errorGeneration: 'Une erreur est survenue lors de la génération',
     errorCopy: 'Erreur lors de la copie dans le presse-papier',
     successConfig: 'Configuration enregistrée avec succès !',
@@ -48,9 +48,9 @@ const translations = {
     closeTooltip: 'Fermer',
 
     // Sélecteur de langue
-    interfaceLanguageLabel: 'Langue de l\'interface',
+    interfaceLanguageLabel: "Langue de l'interface",
     french: 'Français',
-    english: 'English'
+    english: 'English',
   },
 
   en: {
@@ -59,7 +59,8 @@ const translations = {
 
     // Page principale
     jobDescriptionLabel: 'Job Description',
-    jobDescriptionPlaceholder: 'Paste here the full description of the position you are applying for...',
+    jobDescriptionPlaceholder:
+      'Paste here the full description of the position you are applying for...',
     languageLabel: 'Language',
     maxCharsLabel: 'Max characters',
     generateButton: 'Generate my cover letter',
@@ -102,8 +103,8 @@ const translations = {
     // Sélecteur de langue
     interfaceLanguageLabel: 'Interface Language',
     french: 'Français',
-    english: 'English'
-  }
+    english: 'English',
+  },
 };
 
 // Langue par défaut

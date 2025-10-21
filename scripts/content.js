@@ -7,7 +7,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sendResponse({ success: true });
   } else if (request.action === 'getPageLanguage') {
     // Détecter la langue de la page
-    const htmlLang = document.documentElement.lang || document.documentElement.getAttribute('xml:lang');
+    const htmlLang =
+      document.documentElement.lang || document.documentElement.getAttribute('xml:lang');
     const metaLang = document.querySelector('meta[http-equiv="content-language"]')?.content;
     const language = htmlLang || metaLang || 'en';
     sendResponse({ language });
@@ -23,7 +24,7 @@ function insertTextIntoActiveElement(text) {
   if (
     activeElement.tagName === 'TEXTAREA' ||
     (activeElement.tagName === 'INPUT' &&
-     (activeElement.type === 'text' || activeElement.type === 'email'))
+      (activeElement.type === 'text' || activeElement.type === 'email'))
   ) {
     // Pour les inputs et textareas standards
     activeElement.value = text;
@@ -51,7 +52,9 @@ function insertTextIntoActiveElement(text) {
 
 // Ajouter un indicateur visuel pour les champs de texte détectés
 function highlightTextFields() {
-  const textFields = document.querySelectorAll('textarea, input[type="text"], [contenteditable="true"]');
+  const textFields = document.querySelectorAll(
+    'textarea, input[type="text"], [contenteditable="true"]'
+  );
 
   textFields.forEach(field => {
     field.addEventListener('focus', () => {

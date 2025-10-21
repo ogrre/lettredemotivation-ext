@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   testEnvironment: 'jsdom',
   collectCoverage: true,
   coverageDirectory: 'coverage',
@@ -7,19 +7,19 @@ module.exports = {
     'scripts/**/*.js',
     '!scripts/**/*.test.js',
     '!**/node_modules/**',
-    '!**/lib/**'
+    '!**/lib/**',
   ],
   coverageThreshold: {
     global: {
       branches: 70,
       functions: 70,
       lines: 70,
-      statements: 70
-    }
+      statements: 70,
+    },
   },
   setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
   testMatch: ['**/tests/**/*.test.js'],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/$1'
-  }
+    '^@/(.*)$': '<rootDir>/$1',
+  },
 };

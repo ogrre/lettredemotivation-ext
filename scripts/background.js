@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 async function generateCoverLetter(data) {
-  const { jobDescription, cvText, language, maxChars } = data;
+  const { jobDescription, cvText, language, maxChars, additionalNotes } = data;
 
   try {
     // Récupérer la clé API depuis le storage
@@ -21,7 +21,7 @@ async function generateCoverLetter(data) {
     }
 
     // Construire le prompt
-    const prompt = buildPrompt(cvText, jobDescription, language, maxChars);
+    const prompt = buildPrompt(cvText, jobDescription, language, maxChars, additionalNotes);
 
     // Appeler l'API OpenAI
     const coverLetter = await callOpenAI(config.apiKey, prompt, maxChars);
@@ -60,12 +60,13 @@ function sanitizeInput(text) {
   return sanitized.trim();
 }
 
-function buildPrompt(cvText, jobDescription, language, maxChars) {
+function buildPrompt(cvText, jobDescription, language, maxChars, additionalNotes) {
   const lang = language === 'fr' ? 'français' : 'anglais';
 
   // Sanitizer les inputs utilisateur pour prévenir les injections de prompt
   const sanitizedJobDescription = sanitizeInput(jobDescription);
   const sanitizedCvText = sanitizeInput(cvText);
+  const sanitizedNotes = additionalNotes ? sanitizeInput(additionalNotes) : '';
 
   let prompt = '';
 
@@ -86,7 +87,7 @@ ${sanitizedCvText}
 
 **DESCRIPTION DU POSTE :**
 ${sanitizedJobDescription}
-
+${sanitizedNotes ? `\n**NOTES SUPPLÉMENTAIRES / CONTEXTE ADDITIONNEL :**\n${sanitizedNotes}\n` : ''}
 **INSTRUCTIONS :**
 1. Analyse mon CV et identifie mes compétences et expériences les plus pertinentes pour ce poste
 2. Identifie les exigences clés et les valeurs de l'entreprise dans la description du poste
@@ -119,7 +120,7 @@ ${sanitizedCvText}
 
 **JOB DESCRIPTION:**
 ${sanitizedJobDescription}
-
+${sanitizedNotes ? `\n**ADDITIONAL NOTES / EXTRA CONTEXT:**\n${sanitizedNotes}\n` : ''}
 **INSTRUCTIONS:**
 1. Analyze my resume and identify my most relevant skills and experiences for this position
 2. Identify key requirements and company values in the job description

@@ -155,12 +155,22 @@ async function detectLanguage() {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     let pageLang = null;
 
-    if (tab && tab.id) {
+    if (tab && tab.id && tab.url && !tab.url.startsWith('chrome://')) {
       try {
-        const response = await chrome.tabs.sendMessage(tab.id, { action: 'getPageLanguage' });
-        pageLang = response?.language;
+        // Injecter le script pour détecter la langue
+        const results = await chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          func: () => {
+            const htmlLang =
+              document.documentElement.lang || document.documentElement.getAttribute('xml:lang');
+            const metaLang = document.querySelector('meta[http-equiv="content-language"]')?.content;
+            return htmlLang || metaLang || 'en';
+          },
+        });
+        pageLang = results[0]?.result;
       } catch (e) {
         // Impossible d'obtenir la langue de la page (normal sur certaines pages système)
+        console.log('Could not detect page language:', e);
       }
     }
 
@@ -315,6 +325,7 @@ document.getElementById('generate-form').addEventListener('submit', async e => {
   e.preventDefault();
 
   const jobDescription = document.getElementById('jobDescription').value.trim();
+  const additionalNotes = document.getElementById('additionalNotes').value.trim();
   const language = document.getElementById('language').value;
   const maxChars = parseInt(document.getElementById('maxChars').value);
 
@@ -356,6 +367,7 @@ document.getElementById('generate-form').addEventListener('submit', async e => {
         cvText: config.cvText,
         language,
         maxChars,
+        additionalNotes,
       },
     });
 

@@ -21,6 +21,7 @@ The companion website is a separate project used to present the extension, docum
 - French and English interface and output;
 - automatic language detection;
 - configurable maximum character count;
+- application draft persistence when the popup is closed;
 - copy-to-clipboard result flow;
 - popup interface aligned with the website's mint-and-dark visual identity;
 - compatible with Chrome, Brave, Firefox and other supported Chromium browsers.
@@ -61,6 +62,8 @@ Open the extension popup and select the settings button. The configuration conta
 - a PDF resume;
 - the interface language;
 - the language and maximum length for generated letters.
+
+The job description and additional notes are saved as a local draft on each input, so closing the popup does not lose work.
 
 The extension stores these values with the browser's local extension storage. Review the permissions in `manifest.json` before installing a development build.
 

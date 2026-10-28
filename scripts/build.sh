@@ -12,49 +12,43 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+PROJECT_DIR=$(pwd)
+RELEASE_DIR="$PROJECT_DIR/../release"
+
 # Nettoyer le dossier release
 echo "${BLUE}📦 Nettoyage du dossier release...${NC}"
-rm -rf ../release
-mkdir -p ../release
+rm -rf "$RELEASE_DIR"
+mkdir -p "$RELEASE_DIR"
 
 # Créer un dossier temporaire pour le build
 TEMP_DIR=$(mktemp -d)
+trap 'rm -rf "$TEMP_DIR"' EXIT
 echo "${BLUE}📂 Création du package dans ${TEMP_DIR}...${NC}"
 
-# Copier les fichiers nécessaires (exclure node_modules, tests, etc.)
-rsync -av \
-  --exclude='node_modules' \
-  --exclude='tests' \
-  --exclude='coverage' \
-  --exclude='.git' \
-  --exclude='.DS_Store' \
-  --exclude='*.log' \
-  --exclude='scripts/build.sh' \
-  --exclude='scripts/build-firefox.sh' \
-  --exclude='jest.config.js' \
-  --exclude='package-lock.json' \
-  --exclude='.eslintrc.json' \
-  --exclude='.eslintignore' \
-  --exclude='.prettierrc.json' \
-  --exclude='.prettierignore' \
-  --exclude='generate-icons.html' \
-  ./ "$TEMP_DIR/"
+# Copier uniquement les fichiers nécessaires à l'exécution de l'extension,
+# en conservant l'arborescence attendue par manifest.json.
+rsync -a manifest.json popup.html styles.css "$TEMP_DIR/"
+rsync -a --exclude='build.sh' scripts/ "$TEMP_DIR/scripts/"
+rsync -a lib/ "$TEMP_DIR/lib/"
+rsync -a \
+  --exclude='ICON_INSTRUCTIONS.md' \
+  --exclude='icon.svg' \
+  --exclude='icon32.png' \
+  --exclude='icon64.png' \
+  icons/ "$TEMP_DIR/icons/"
 
 # Obtenir la version depuis manifest.json
-VERSION=$(grep -o '"version": "[^"]*' manifest.json | cut -d'"' -f4)
+VERSION=$(node -e "console.log(JSON.parse(require('fs').readFileSync('manifest.json', 'utf8')).version)")
 
 # Créer l'archive ZIP pour Chrome Web Store
 ZIP_NAME="lettredemotivation-ext-v${VERSION}.zip"
 echo "${BLUE}📦 Création de ${ZIP_NAME}...${NC}"
 cd "$TEMP_DIR"
-zip -r "../release/${ZIP_NAME}" ./* -x "*.git*" "*.DS_Store"
-cd - > /dev/null
-
-# Nettoyer le dossier temporaire
-rm -rf "$TEMP_DIR"
+zip -qr "$RELEASE_DIR/${ZIP_NAME}" . -x "*.git*" "*.DS_Store"
+cd "$PROJECT_DIR" > /dev/null
 
 echo "${GREEN}✅ Build terminé !${NC}"
-echo "${GREEN}📦 Package disponible : ../release/${ZIP_NAME}${NC}"
+echo "${GREEN}📦 Package disponible : ${RELEASE_DIR}/${ZIP_NAME}${NC}"
 echo ""
 echo "Prochaines étapes :"
 echo "  1. Chrome Web Store: Uploader ../release/${ZIP_NAME}"

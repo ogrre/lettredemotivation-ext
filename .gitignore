@@ -12,6 +12,7 @@ web-ext-artifacts
 CHROME_STORE_LISTING_FR.md
 icons/icon32.png
 icons/icon64.png
+promo-preview.html
 
 # Fichiers de publication/release
 *.pem

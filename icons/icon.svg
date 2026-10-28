@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title desc">
+  <title id="title">Lettre de Motivation</title>
+  <desc id="desc">Un sparkle sombre à quatre branches sur un carré vert menthe aux coins arrondis</desc>
+  <rect width="128" height="128" rx="28" fill="#75E0B8"/>
+  <path
+    d="M64 18C67.3 43 75 60.7 110 64 75 67.3 67.3 85 64 110 60.7 85 53 67.3 18 64 53 60.7 60.7 43 64 18Z"
+    fill="#0A1713"
+  />
+</svg>

@@ -944,3 +944,173 @@ input[type='text']:focus {
 .modal-body::-webkit-scrollbar-thumb:hover {
   background: #3a3a3a;
 }
+
+/* === Lettre de Motivation — nouvelle identité visuelle === */
+:root {
+  --bg: #0a0f0e;
+  --surface: #111b18;
+  --surface-2: #17231f;
+  --line: #22312c;
+  --line-strong: #3a5149;
+  --ink: #eef8f3;
+  --muted: #9aada5;
+  --muted-dim: #64766f;
+  --mint: #75e0b8;
+  --deep: #0a1713;
+}
+
+body {
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.container,
+.settings-page {
+  background: var(--bg);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom-color: var(--line);
+  background: rgba(10, 15, 14, .94);
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--deep);
+  background: var(--mint);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.settings-btn,
+.bug-btn,
+.modal-close {
+  border-color: var(--line);
+  border-radius: 9px;
+  color: var(--muted);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.settings-btn:hover,
+.bug-btn:hover,
+.modal-close:hover {
+  border-color: var(--line-strong);
+  color: var(--ink);
+  background: var(--surface-2);
+  box-shadow: none;
+}
+
+.main-content,
+.settings-content {
+  padding: 22px;
+}
+
+label {
+  color: var(--muted);
+  letter-spacing: .08em;
+}
+
+.required { color: var(--mint); }
+.optional { color: var(--muted-dim); }
+
+textarea,
+input[type='text'],
+input[type='password'],
+input[type='number'],
+.select-btn {
+  border-color: var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+textarea:focus,
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='number']:focus,
+.select-btn:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 3px rgba(117, 224, 184, .08);
+}
+
+textarea::placeholder { color: var(--muted-dim); }
+
+.dropdown-menu {
+  border-color: var(--line);
+  border-radius: 10px;
+  background: var(--surface-2);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .35);
+}
+
+.dropdown-item { color: var(--ink); }
+.dropdown-item:hover { background: #20302a; }
+
+.btn-generate,
+.btn-save,
+.btn-copy {
+  border: 0;
+  border-radius: 10px;
+  color: var(--deep);
+  background: var(--mint);
+  box-shadow: 0 10px 22px rgba(117, 224, 184, .12);
+  font-weight: 700;
+}
+
+.btn-generate:hover:not(:disabled),
+.btn-save:hover,
+.btn-copy:hover {
+  color: var(--deep);
+  background: #91edc8;
+  box-shadow: 0 12px 26px rgba(117, 224, 184, .18);
+}
+
+.error-banner {
+  border-color: rgba(255, 116, 116, .24);
+  border-radius: 10px;
+  color: #ffb8b8;
+  background: rgba(120, 32, 42, .2);
+}
+
+.settings-page { color: var(--ink); }
+.settings-header { border-bottom-color: var(--line); background: var(--bg); }
+.settings-content { overflow-y: auto; }
+.help-text { color: var(--muted-dim); }
+.help-text a, .app-footer a { color: var(--mint); }
+.file-label { border-color: var(--line); border-radius: 10px; color: var(--muted); background: var(--surface); }
+.file-label:hover { border-color: var(--line-strong); color: var(--ink); background: var(--surface-2); }
+.message.success { border-color: rgba(117, 224, 184, .25); color: var(--mint); background: rgba(117, 224, 184, .1); }
+.message.error { border-color: rgba(255, 116, 116, .25); background: rgba(120, 32, 42, .2); }
+.message.info { border-color: var(--line); color: var(--muted); background: var(--surface); }
+.app-footer { border-top-color: var(--line); background: var(--bg); }
+.footer-text, .footer-credits { color: var(--muted-dim); }
+
+.modal-overlay { background: rgba(4, 10, 8, .78); }
+.modal-content { border-color: var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 24px 60px rgba(0, 0, 0, .5); }
+.modal-header, .modal-footer { border-color: var(--line); }
+.success-icon { border: 0; color: var(--deep); background: var(--mint); box-shadow: none; }
+.modal-header h3, .result-text { color: var(--ink); }
+.result-text { color: #c5d6ce; }

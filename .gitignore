@@ -14,6 +14,10 @@ icons/icon32.png
 icons/icon64.png
 promo-preview.html
 marquee-preview.html
+promo.png
+marquee.png
+promo-*.jpg
+marquee-*.jpg
 
 # Fichiers de publication/release
 *.pem

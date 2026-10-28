@@ -8,7 +8,7 @@ Before you begin, ensure you have:
 
 - [ ] A Google account
 - [ ] $5 USD one-time developer registration fee
-- [ ] The built package: `dist/lettredemotivation-ext-v1.0.0.zip`
+- [ ] The built package: `../release/lettredemotivation-ext-v2.0.0.zip`
 - [ ] Screenshots of the extension (3-5 recommended)
 - [ ] Promotional images (optional but recommended)
 
@@ -62,7 +62,7 @@ Create 3-5 screenshots showing:
 
 1. Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
 2. Click **"New Item"** button
-3. Upload `dist/lettredemotivation-ext-v1.0.0.zip`
+3. Upload `../release/lettredemotivation-ext-v2.0.0.zip`
 4. Click **"Upload"**
 
 ## Step 4: Fill Out the Store Listing
@@ -245,7 +245,7 @@ Key points:
 To publish updates:
 
 1. Update version in `manifest.json`
-2. Build new package: `./build-chrome.sh`
+2. Update the version in `manifest.json` and run `npm run build:release`
 3. Upload new ZIP to Developer Dashboard
 4. Submit for review again
 

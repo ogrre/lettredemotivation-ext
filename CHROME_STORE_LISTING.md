@@ -159,9 +159,9 @@ ai, cover letter, job application, resume, cv, job search, openai, gpt, producti
 
 ---
 
-## Version Notes (v1.0.0)
+## Version Notes (v2.0.0)
 
-Initial release featuring:
+Current release featuring:
 - AI-powered cover letter generation with GPT-4o-mini
 - PDF resume import and parsing
 - Multilingual support (French/English)

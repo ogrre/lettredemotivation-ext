@@ -7,6 +7,8 @@ const resultModal = document.getElementById('result-modal');
 const btnLoader = document.querySelector('.btn-loader');
 const errorBanner = document.getElementById('error-message');
 const configMessage = document.getElementById('config-message');
+const jobDescriptionInput = document.getElementById('jobDescription');
+const additionalNotesInput = document.getElementById('additionalNotes');
 
 // Initialiser les états d'affichage
 if (mainContainer) mainContainer.style.display = 'flex';
@@ -15,6 +17,23 @@ if (resultModal) resultModal.style.display = 'none';
 if (btnLoader) btnLoader.style.display = 'none';
 if (errorBanner) errorBanner.style.display = 'none';
 if (configMessage) configMessage.style.display = 'none';
+
+// === Brouillon de candidature ===
+// Le popup se ferme dès que l'utilisateur clique ailleurs. Sauvegarder à chaque
+// frappe permet de reprendre la description et les notes à la prochaine ouverture.
+function saveDraft() {
+  const result = chrome.storage.local.set({
+    draftJobDescription: jobDescriptionInput?.value || '',
+    draftAdditionalNotes: additionalNotesInput?.value || '',
+  });
+
+  if (result && typeof result.catch === 'function') {
+    result.catch(error => console.warn('Could not save application draft:', error));
+  }
+}
+
+jobDescriptionInput?.addEventListener('input', saveDraft);
+additionalNotesInput?.addEventListener('input', saveDraft);
 
 // Initialiser la langue et traduire l'interface
 initLanguage().then(() => {
@@ -194,7 +213,17 @@ async function loadConfig() {
     'language',
     'maxChars',
     'interfaceLanguage',
+    'draftJobDescription',
+    'draftAdditionalNotes',
   ]);
+
+  if (typeof config.draftJobDescription === 'string') {
+    jobDescriptionInput.value = config.draftJobDescription;
+  }
+
+  if (typeof config.draftAdditionalNotes === 'string' && additionalNotesInput) {
+    additionalNotesInput.value = config.draftAdditionalNotes;
+  }
 
   if (config.apiKey) {
     document.getElementById('apiKey').value = config.apiKey;

@@ -7,6 +7,11 @@ dist
 *.zip
 web-ext-artifacts
 
+# Local-only assets not referenced by the extension manifest
+CHROME_STORE_LISTING_FR.md
+icons/icon32.png
+icons/icon64.png
+
 # Fichiers de publication/release
 *.pem
 *.crx

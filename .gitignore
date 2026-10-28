@@ -18,6 +18,8 @@ promo.png
 marquee.png
 promo-*.jpg
 marquee-*.jpg
+!store-assets/
+!store-assets/*
 
 # Fichiers de publication/release
 *.pem

@@ -1,6 +1,6 @@
 {
   "name": "lettredemotivation-ext",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Browser extension (Chrome/Firefox) to generate personalized cover letters using AI. Dark mode UI, PDF resume parsing, multilingual support (FR/EN). Powered by OpenAI GPT-4o-mini.",
   "main": "index.js",
   "scripts": {

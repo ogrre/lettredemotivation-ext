@@ -6,9 +6,9 @@ All preparation steps are complete. Your extension is ready to be published to t
 
 ## 📦 Package Details
 
-- **Package Location:** `dist/lettredemotivation-ext-v1.0.0.zip`
+- **Package Location:** `../release/lettredemotivation-ext-v2.0.0.zip`
 - **Package Size:** ~400KB
-- **Version:** 1.0.0
+- **Version:** 2.0.0
 - **Manifest Version:** 3 (latest)
 
 ## ✅ Completed Tasks
@@ -61,7 +61,7 @@ All preparation steps are complete. Your extension is ready to be published to t
 
 3. **Submit Extension**
    - Click "New Item"
-   - Upload `dist/lettredemotivation-ext-v1.0.0.zip`
+   - Upload `../release/lettredemotivation-ext-v2.0.0.zip`
    - Fill out store listing (copy from CHROME_STORE_LISTING.md)
    - Upload screenshots
    - Submit for review
@@ -230,7 +230,7 @@ Good luck! 🚀
 
 ---
 
-**Package:** `dist/lettredemotivation-ext-v1.0.0.zip`
+**Package:** `../release/lettredemotivation-ext-v2.0.0.zip`
 **Size:** ~400KB
 **Version:** 1.0.0
 **Status:** Ready for submission ✅

@@ -17,13 +17,13 @@ promo-preview.html
 marquee-preview.html
 promo.png
 marquee.png
-store-assets/*.html
-store-assets/promo.png
-store-assets/marquee.png
 promo-*.jpg
 marquee-*.jpg
 !store-assets/
 !store-assets/*
+store-assets/*.html
+store-assets/promo.png
+store-assets/marquee.png
 
 # Fichiers de publication/release
 *.pem

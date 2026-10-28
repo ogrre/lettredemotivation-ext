@@ -6,6 +6,7 @@ coverage
 dist
 *.zip
 web-ext-artifacts
+.claude/
 
 # Local-only assets not referenced by the extension manifest
 CHROME_STORE_LISTING_FR.md
